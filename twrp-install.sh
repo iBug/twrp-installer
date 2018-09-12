@@ -12,11 +12,26 @@ e_error() {
   echo -e "\033[31;1m[ERROR]\033[0m $*" >&2
 }
 
-echo "*************************"
-echo "* Manual TWRP installer *"
-echo "*        by iBug        *"
-echo "*************************"
-echo
+show_help() {
+  cat << %
+Manual TWRP Installer
+Made by iBug
+
+Usage: $0 -d <dir> -t <target>
+<dir> is where you extracted TWRP installer ZIP to
+<target> is "A" (slot A), "B" (slot B) or a boot.img file
+
+Requires root access to perform patch.
+%
+}
+
+show_title() {
+  echo "*************************"
+  echo "* Manual TWRP installer *"
+  echo "*        by iBug        *"
+  echo "*************************"
+  echo
+}
 
 # Check for root access
 if [ "$(id -u)" != "0" ]; then
